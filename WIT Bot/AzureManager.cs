@@ -15,12 +15,12 @@ namespace Bank_Bot
     {
         private static AzureManager instance;
         private MobileServiceClient client;
-        private IMobileServiceTable<timeline> currencyAccount;
+        private IMobileServiceTable<moneyTable> currencyAccount;
 
         private AzureManager()
         {
-            this.client = new MobileServiceClient("http://moodtimeline111111.azurewebsites.net");
-            this.currencyAccount = this.client.GetTable<timeline>();
+            this.client = new MobileServiceClient("http://msaeasytables.azurewebsites.net");
+            this.currencyAccount = this.client.GetTable<moneyTable>();
         }
 
         public MobileServiceClient AzureClient
@@ -41,23 +41,23 @@ namespace Bank_Bot
             }
         }
 
-        public async Task DeleteAccount(timeline account)
+        public async Task DeleteAccount(moneyTable account)
         {
             await currencyAccount.DeleteAsync(account);
         }
 
 
-        public async Task CreateAccount(timeline account)
+        public async Task CreateAccount(moneyTable account)
         {
             await this.currencyAccount.InsertAsync(account);
         }
 
-        public async Task<List<timeline>> GetAccount()
+        public async Task<List<moneyTable>> GetAccount()
         {
             return await this.currencyAccount.ToListAsync();
         }
 
-        public async Task UpdateAccount(timeline account)
+        public async Task UpdateAccount(moneyTable account)
         {
             await this.currencyAccount.UpdateAsync(account);
         }

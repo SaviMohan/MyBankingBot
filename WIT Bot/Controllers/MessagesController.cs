@@ -128,7 +128,7 @@ namespace Bank_Bot
 
                 if (userMessage.ToLower().Equals("list of currencies"))
                 {
-                    Activity replyToConversation = activity.CreateReply("List of Currencies Available");
+                    Activity replyToConversation = activity.CreateReply("List of Available Currencies");
                     replyToConversation.Recipient = activity.From;
                     replyToConversation.Type = "message";
                     replyToConversation.Attachments = new List<Attachment>();
@@ -159,9 +159,9 @@ namespace Bank_Bot
                 /////////////////////////////
                 if (userMessage.ToLower().Equals("get account"))
                 {
-                    List<timeline> accounts = await AzureManager.AzureManagerInstance.GetAccount();
+                    List<moneyTable> accounts = await AzureManager.AzureManagerInstance.GetAccount();
                     endOutput = "";
-                    foreach (timeline account in accounts)
+                    foreach (moneyTable account in accounts)
                     {
                         endOutput += " Password: " + account.Password + ", Balance: $" + account.Balance + "\n\n";
                     }
@@ -172,7 +172,7 @@ namespace Bank_Bot
 
                 if (userMessage.ToLower().Equals("new account"))
                 {
-                    timeline account = new timeline()
+                    moneyTable account = new moneyTable()
                     {
                         ID = "12345432167",
                         //CreatedAt = DateTime.Now,
@@ -187,15 +187,15 @@ namespace Bank_Bot
 
 
 
-                    endOutput = "New account created at [" + account.CreatedAt + "]";
+                    endOutput = "New account created at [";// + account.CreatedAt + "]";
                 }
 
 
                 if (userMessage.ToLower().Equals("delete account"))
                 {
-                    timeline account = new timeline()
+                    moneyTable account = new moneyTable()
                     {
-                        ID = "1239",
+                        ID = "1257",
                         //CreatedAt = DateTime.Now,
                         //UpdatedAt = DateTime.Now,
                         //Deleted = false,

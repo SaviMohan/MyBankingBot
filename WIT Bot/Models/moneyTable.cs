@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bank_Bot.Models
 {
-    public class timeline
+    public class moneyTable
     {
         [JsonProperty(PropertyName = "id")]
         public string ID { get; set; }
