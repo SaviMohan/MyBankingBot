@@ -28,6 +28,6 @@ namespace Bank_Bot.Models
         public double Balance { get; set; }
 
         [JsonProperty(PropertyName = "password")]
-        public double Password { get; set; }
+        public int Password { get; set; }
     }
 }
