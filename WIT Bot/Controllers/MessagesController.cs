@@ -177,7 +177,7 @@ namespace Bank_Bot
 
                         if ((passwordString.Length != 5)||!(isAllDigits))
                         {
-                            endOutput = "Please ensure password is a positive 5-digit number";
+                            endOutput = "Please ensure password is a positive 5 digit number";
                         }else
                         {
                             int encryptedPassword = ((int.Parse(passwordString))*10)-1;
@@ -192,7 +192,7 @@ namespace Bank_Bot
                                 {
                                     if (account.Password == encryptedPassword)
                                     {
-                                        endOutput = " Account No.: " + passwordString + ", Balance: $" + account.Balance; //+ "\n\n";
+                                        endOutput = " Account Number: " + passwordString + ", Balance: $" + account.Balance; //+ "\n\n";
                                     }
 
                                 }
@@ -206,24 +206,39 @@ namespace Bank_Bot
                     }
 
 
-                    if (userMessage.ToLower().Equals("new account"))
+                    if (userMessage.ToLower().Substring(0, 11).Equals("account new"))
                     {
-                        moneyTable account = new moneyTable()
+                        string passwordString = userMessage.Substring(12);
+                        bool isAllDigits = !passwordString.Any(ch => ch < '0' || ch > '9');
+
+                        if ((passwordString.Length != 5) || !(isAllDigits))
                         {
-                            ID = "12345432167",
-                            //CreatedAt = DateTime.Now,
-                            //UpdatedAt = DateTime.Now,
-                            //Deleted = false,
-                            //Version = "1.0"
-                            Balance = 1333,
-                            Password = 9999
-                        };
+                            endOutput = "Please ensure password is a positive 5 digit number";
+                        }
+                        else
+                        {
+                            int encryptedPassword = ((int.Parse(passwordString)) * 10) - 1;
+                            if (((passwordList).Contains(encryptedPassword)))
+                            {
+                                endOutput = "This password already exists in our Database, please try again with a different 5 digit password";
+                            }
+                            else
+                            {
+                                moneyTable account = new moneyTable()
+                                {
+                                    //ID = "12345432167",
+                                    //CreatedAt = DateTime.Now,
+                                    //UpdatedAt = DateTime.Now,
+                                    //Deleted = false,
+                                    //Version = "1.0"
+                                    Balance = 0,
+                                    Password = encryptedPassword
+                                };
 
-                        await AzureManager.AzureManagerInstance.CreateAccount(account);
-
-
-
-                        endOutput = "New account created at [";// + account.CreatedAt + "]";
+                                await AzureManager.AzureManagerInstance.CreateAccount(account);
+                                endOutput = "New account created ";
+                            }
+                        }                           
                     }
 
                     if (userMessage.ToLower().Equals("update account"))
