@@ -408,8 +408,8 @@ namespace Bank_Bot
                     //cardButtons.Add(plButton);
                     ThumbnailCard plCard = new ThumbnailCard()
                     {
-                        Title = endOutput,
-
+                        //Title = endOutput,
+                        Subtitle  = endOutput,
                         Images = cardImages
                         //Buttons = cardButtons
                     };
