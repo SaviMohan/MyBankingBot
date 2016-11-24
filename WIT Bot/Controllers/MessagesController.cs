@@ -391,6 +391,33 @@ namespace Bank_Bot
 
                         //endOutput = "Account deleted ";//[" + account.CreatedAt + "]";
                     }///////////////
+
+                    Activity replyToConversation = activity.CreateReply("Bank Account");
+                    replyToConversation.Recipient = activity.From;
+                    replyToConversation.Type = "message";
+                    replyToConversation.Attachments = new List<Attachment>();
+                    List<CardImage> cardImages = new List<CardImage>();
+                    cardImages.Add(new CardImage(url: "https://pbs.twimg.com/profile_images/709620078/contosobanklogo.jpg"));
+                    //List<CardAction> cardButtons = new List<CardAction>();
+                    //CardAction plButton = new CardAction()
+                    //{
+                    //    Value = "http://fixer.io",
+                    //    Type = "openUrl",
+                    //    Title = "Currency API Website"
+                    //};
+                    //cardButtons.Add(plButton);
+                    ThumbnailCard plCard = new ThumbnailCard()
+                    {
+                        Title = endOutput,
+
+                        Images = cardImages,
+                        //Buttons = cardButtons
+                    };
+                    Attachment plAttachment = plCard.ToAttachment();
+                    replyToConversation.Attachments.Add(plAttachment);
+                    await connector.Conversations.SendToConversationAsync(replyToConversation);
+
+                    return Request.CreateResponse(HttpStatusCode.OK);
                 }
 
 
