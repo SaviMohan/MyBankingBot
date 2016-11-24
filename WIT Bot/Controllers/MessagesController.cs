@@ -241,7 +241,7 @@ namespace Bank_Bot
                         }                           
                     }
 
-                    if (userMessage.ToLower().Equals("update account"))
+                    if (userMessage.ToLower().Substring(0, 14).Equals("account update"))
                     {
                         //moneyTable account = new moneyTable()
                         //{
@@ -256,18 +256,18 @@ namespace Bank_Bot
 
                         //await AzureManager.AzureManagerInstance.CreateAccount(account);
 
-                        List<moneyTable> accounts = await AzureManager.AzureManagerInstance.GetAccount();
-                        //endOutput = "";
-                        foreach (moneyTable moneyAccount in accounts)
-                        {
-                            //endOutput += " Password: " + account.Password + ", Balance: $" + account.Balance + "\n\n";
-                            if (moneyAccount.ID == "12345432167")
-                            {
-                                moneyAccount.Balance = 1999;
-                                moneyAccount.Password = 8888;
-                                await AzureManager.AzureManagerInstance.UpdateAccount(moneyAccount);
-                            }
-                        }
+                        //List<moneyTable> accounts = await AzureManager.AzureManagerInstance.GetAccount();
+                        ////endOutput = "";
+                        //foreach (moneyTable moneyAccount in accounts)
+                        //{
+                        //    //endOutput += " Password: " + account.Password + ", Balance: $" + account.Balance + "\n\n";
+                        //    if (moneyAccount.ID == "12345432167")
+                        //    {
+                        //        moneyAccount.Balance = 1999;
+                        //        moneyAccount.Password = 8888;
+                        //        await AzureManager.AzureManagerInstance.UpdateAccount(moneyAccount);
+                        //    }
+                        //}
 
                         //var namebet = await todoTable.Where(p => p.Id == 1).ToListAsync();
 
@@ -278,7 +278,58 @@ namespace Bank_Bot
                         //    await todoTable.UpdateAsync(item);
                         //}
 
-                        endOutput = "account updated [";// + account.CreatedAt + "]";
+                        string passwordString = userMessage.Substring(15,5); //extract password
+                        bool isAllDigits = !passwordString.Any(ch => ch < '0' || ch > '9');
+
+                        if ((passwordString.Length != 5) || !(isAllDigits))
+                        {
+                            endOutput = "Please ensure password is a positive 5 digit number";
+                        }
+                        else
+                        {
+                            int encryptedPassword = ((int.Parse(passwordString)) * 10) - 1;
+                            if (!((passwordList).Contains(encryptedPassword)))
+                            {
+                                endOutput = "This account does not exist in our Database, please try again with a different 5 digit password";
+                            }
+                            else
+                            {
+                                string balanceString = userMessage.Substring(21);
+                                Double num = 0;
+                                bool isDouble = false;
+
+                                // Check for empty string.
+                                //if (string.IsNullOrEmpty(text))
+                                //{
+                                //    return false;
+                                //}
+
+                                isDouble = Double.TryParse(balanceString, out num);
+                                if (isDouble)
+                                {
+                                    List<moneyTable> accounts = await AzureManager.AzureManagerInstance.GetAccount();
+                                    //endOutput = "";
+                                    foreach (moneyTable moneyAccount in accounts)
+                                    {
+                                        //endOutput += " Password: " + account.Password + ", Balance: $" + account.Balance + "\n\n";
+                                        if (moneyAccount.Password == encryptedPassword)
+                                        {
+                                            moneyAccount.Balance = Convert.ToDouble(balanceString);
+                                            //moneyAccount.Password = 8888;
+                                            await AzureManager.AzureManagerInstance.UpdateAccount(moneyAccount);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    endOutput = "Please enter a valid bank account balance ";
+                                }
+                                
+                                
+                            }
+                        }
+
+                        //endOutput = "account updated [";// + account.CreatedAt + "]";
                     }
 
 
