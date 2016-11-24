@@ -475,6 +475,42 @@ namespace Bank_Bot
                     Attachment plAttachment4 = plCard4.ToAttachment();
                     replyToConversation.Attachments.Add(plAttachment4);
 
+                    ThumbnailCard plCard5 = new ThumbnailCard()
+                    {
+
+                        Subtitle = "'account view <insert 5 digit password here>'- Retrieves the bank balance for an account that corressponds to the input password",
+
+                    };
+                    Attachment plAttachment5 = plCard5.ToAttachment();
+                    replyToConversation.Attachments.Add(plAttachment5);
+
+                    ThumbnailCard plCard6 = new ThumbnailCard()
+                    {
+
+                        Subtitle = "'account new <insert 5 digit password here>'- Creates an account that corressponds to the input password",
+
+                    };
+                    Attachment plAttachment6 = plCard6.ToAttachment();
+                    replyToConversation.Attachments.Add(plAttachment6);
+
+                    ThumbnailCard plCard7 = new ThumbnailCard()
+                    {
+
+                        Subtitle = "'account update <insert 5 digit password here> <insert bank balance here>'- Updates the balance of the account that corressponds to the input password",
+
+                    };
+                    Attachment plAttachment7 = plCard7.ToAttachment();
+                    replyToConversation.Attachments.Add(plAttachment7);
+
+                    ThumbnailCard plCard8 = new ThumbnailCard()
+                    {
+
+                        Subtitle = "'account delete <insert 5 digit password here>'- Deletes the account that corressponds to the input password",
+
+                    };
+                    Attachment plAttachment8 = plCard8.ToAttachment();
+                    replyToConversation.Attachments.Add(plAttachment8);
+
                     ThumbnailCard plCard12 = new ThumbnailCard()
                     {
                         
