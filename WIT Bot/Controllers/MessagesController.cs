@@ -190,12 +190,52 @@ namespace Bank_Bot
                     endOutput = "New account created at [";// + account.CreatedAt + "]";
                 }
 
+                if (userMessage.ToLower().Equals("update account"))
+                {
+                    //moneyTable account = new moneyTable()
+                    //{
+                    //    ID = "12345432167",
+                    //    //CreatedAt = DateTime.Now,
+                    //    //UpdatedAt = DateTime.Now,
+                    //    //Deleted = false,
+                    //    //Version = "1.0"
+                    //    Balance = 1999,
+                    //    Password = 8888
+                    //};
+
+                    //await AzureManager.AzureManagerInstance.CreateAccount(account);
+
+                    List<moneyTable> accounts = await AzureManager.AzureManagerInstance.GetAccount();
+                    //endOutput = "";
+                    foreach (moneyTable moneyAccount in accounts)
+                    {
+                        //endOutput += " Password: " + account.Password + ", Balance: $" + account.Balance + "\n\n";
+                        if (moneyAccount.ID == "12345432167")
+                        {
+                            moneyAccount.Balance = 1999;
+                            moneyAccount.Password = 8888;
+                            await AzureManager.AzureManagerInstance.UpdateAccount(moneyAccount);
+                        }
+                    }
+
+                    //var namebet = await todoTable.Where(p => p.Id == 1).ToListAsync();
+
+                    //foreach (var item in namebet)
+                    //{
+                    //    item.Bettiefinalscore1 = int.Parse(FinalScoreA.Text);
+                    //    item.Bettiefinalscore2 = int.Parse(FinalScoreB.Text);
+                    //    await todoTable.UpdateAsync(item);
+                    //}
+
+                    endOutput = "account updated [";// + account.CreatedAt + "]";
+                }
+
 
                 if (userMessage.ToLower().Equals("delete account"))
                 {
                     moneyTable account = new moneyTable()
                     {
-                        ID = "1257",
+                        ID = "12345432167",
                         //CreatedAt = DateTime.Now,
                         //UpdatedAt = DateTime.Now,
                         //Deleted = false,
