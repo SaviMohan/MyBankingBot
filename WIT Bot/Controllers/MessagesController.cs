@@ -220,7 +220,7 @@ namespace Bank_Bot
                     cardButtons.Add(plButton);
                     ThumbnailCard plCard = new ThumbnailCard()
                     {
-                        Title = "NZD,AUD,BGN,BRL,CAD,CHF,CNY,CZK,DKK,GBP,HKD,HRK,HUF,IDR,ILS,INR,JPY,KRW,MXN,MYR,NOK,PHP,PLN,RON,RUB,SEK,SGD,THB,TRY,USD,ZAR,EUR",//"Visit Fixer.io",
+                        Title = "NZD,  \nAUD,BGN,BRL,CAD,CHF,CNY,CZK,DKK,GBP,HKD,HRK,HUF,IDR,ILS,INR,JPY,KRW,MXN,MYR,NOK,PHP,PLN,RON,RUB,SEK,SGD,THB,TRY,USD,ZAR,EUR",//"Visit Fixer.io",
                         //Subtitle = "The Currency Converter API website is here",
                         Images = cardImages,
                         Buttons = cardButtons
