@@ -433,7 +433,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard = new ThumbnailCard()  //Each command gets its own thumbnail so as to improve readability
                     {
                         
-                        Subtitle = "**'my name is <insert name here>'**- Stores the user's name",
+                        Subtitle = "**my name is <insert name here>**- Stores the user's name",
                         
                     };
                     Attachment plAttachment = plCard.ToAttachment();
@@ -442,7 +442,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard1 = new ThumbnailCard()
                     {
                         
-                        Subtitle = "**'list of currencies'**- Lists the currencies for which exchange rates are available",
+                        Subtitle = "**list of currencies**- Lists the currencies for which exchange rates are available",
                         
                     };
                     Attachment plAttachment1 = plCard1.ToAttachment();
@@ -451,7 +451,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard2 = new ThumbnailCard()
                     {
                         
-                        Subtitle = "**'base currency'**- displays the base currency",
+                        Subtitle = "**base currency**- displays the base currency",
                         
                     };
                     Attachment plAttachment2 = plCard2.ToAttachment();
@@ -460,7 +460,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard3 = new ThumbnailCard()
                     {
                         
-                        Subtitle = "**'set base currency <insert 3-digit currency code here>'**- sets the base currency",
+                        Subtitle = "**set base currency <insert 3-digit currency code here>**- sets the base currency",
                         
                     };
                     Attachment plAttachment3 = plCard3.ToAttachment();
@@ -469,7 +469,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard4 = new ThumbnailCard()
                     {
                         
-                        Subtitle = "**'help'**- displays a list of available commands",
+                        Subtitle = "**help**- displays a list of available commands",
                         
                     };
                     Attachment plAttachment4 = plCard4.ToAttachment();
@@ -478,7 +478,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard5 = new ThumbnailCard()
                     {
 
-                        Subtitle = "**'account view <insert 5 digit password here>'**- Retrieves the bank balance for an account that corressponds to the input password",
+                        Subtitle = "**account view <insert 5 digit password here>**- Retrieves the bank balance for an account that corressponds to the input password",
 
                     };
                     Attachment plAttachment5 = plCard5.ToAttachment();
@@ -487,7 +487,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard6 = new ThumbnailCard()
                     {
 
-                        Subtitle = "**'account new <insert 5 digit password here>'**- Creates an account that corressponds to the input password",
+                        Subtitle = "**account new <insert 5 digit password here>**- Creates an account that corressponds to the input password",
 
                     };
                     Attachment plAttachment6 = plCard6.ToAttachment();
@@ -496,7 +496,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard7 = new ThumbnailCard()
                     {
 
-                        Subtitle = "**'account update <insert 5 digit password here> <insert bank balance here>'**- Updates the balance of the account that corressponds to the input password",
+                        Subtitle = "**account update <insert 5 digit password here> <insert bank balance here>**- Updates the balance of the account that corressponds to the input password",
 
                     };
                     Attachment plAttachment7 = plCard7.ToAttachment();
@@ -505,7 +505,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard8 = new ThumbnailCard()
                     {
 
-                        Subtitle = "**'account delete <insert 5 digit password here>'**- Deletes the account that corressponds to the input password",
+                        Subtitle = "**account delete <insert 5 digit password here>**- Deletes the account that corressponds to the input password",
 
                     };
                     Attachment plAttachment8 = plCard8.ToAttachment();
@@ -514,7 +514,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard12 = new ThumbnailCard()
                     {
                         
-                        Subtitle = "**'clear'**- Clear's the user's data",
+                        Subtitle = "**clear**- Clear's the user's data",
                         Images = cardImages,
                        
                     };
