@@ -316,6 +316,7 @@ namespace Bank_Bot
                                         {
                                             moneyAccount.Balance = Convert.ToDouble(balanceString);
                                             //moneyAccount.Password = 8888;
+                                            endOutput = "Account No. " + encryptedPassword + " balance has been updated to $" + balanceString;
                                             await AzureManager.AzureManagerInstance.UpdateAccount(moneyAccount);
                                         }
                                     }
