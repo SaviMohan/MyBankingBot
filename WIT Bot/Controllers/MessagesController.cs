@@ -144,7 +144,7 @@ namespace Bank_Bot
                     cardButtons.Add(plButton);
                     ThumbnailCard plCard = new ThumbnailCard()
                     {
-                        Title = "NZD,  \nAUD,BGN,BRL,CAD,CHF,CNY,CZK,DKK,GBP,HKD,HRK,HUF,IDR,ILS,INR,JPY,KRW,MXN,MYR,NOK,PHP,PLN,RON,RUB,SEK,SGD,THB,TRY,USD,ZAR,EUR",//"Visit Fixer.io",
+                        Title = "NZD,AUD,BGN,BRL,CAD,CHF,CNY,CZK,DKK,GBP,HKD,HRK,HUF,IDR,ILS,INR,JPY,KRW,MXN,MYR,NOK,PHP,PLN,RON,RUB,SEK,SGD,THB,TRY,USD,ZAR,EUR",//"Visit Fixer.io",
                         
                         Images = cardImages,
                         Buttons = cardButtons
@@ -155,6 +155,57 @@ namespace Bank_Bot
 
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
+
+                /////////////////////////////
+                if (userMessage.ToLower().Equals("get account"))
+                {
+                    List<CurrencyObject> accounts = await AzureManager.AzureManagerInstance.GetAccount();
+                    endOutput = "";
+                    foreach (CurrencyObject account in accounts)
+                    {
+                        endOutput += "[" + account.CreatedAt + "] ID " + account.ID + ", Balance: " + account.Balance + "\n\n";
+                    }
+                    
+
+                }
+
+                
+                if (userMessage.ToLower().Equals("new account"))
+                {
+                    CurrencyObject database = new CurrencyObject()
+                    {
+                        ID = "12345432166",
+                        //CreatedAt = DateTime.Now,
+                        //UpdatedAt = DateTime.Now,
+                        //Deleted = false,
+                        //Version = "1.0"
+                    };
+
+                    await AzureManager.AzureManagerInstance.CreateAccount(database);
+
+                    
+
+                    endOutput = "New timeline added [" + database.CreatedAt + "]";
+                }
+
+                
+                if (userMessage.ToLower().Equals("delete account"))
+                {
+                    CurrencyObject database = new CurrencyObject()
+                    {
+                        ID = "12345432100",
+                        //CreatedAt = DateTime.Now,
+                        //UpdatedAt = DateTime.Now,
+                        //Deleted = false,
+                        //Version = "1.0"
+                    };
+
+                    await AzureManager.AzureManagerInstance.DeleteAccount(database);
+
+                    
+
+                    //endOutput = "New timeline added [" + database.CreatedAt + "]";
+                }///////////////
 
                 if (userMessage.ToLower().Equals("help"))
                 {
