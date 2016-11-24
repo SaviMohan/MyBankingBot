@@ -163,32 +163,34 @@ namespace Bank_Bot
                     endOutput = "";
                     foreach (timeline account in accounts)
                     {
-                        endOutput += "[" + account.CreatedAt + "] ID " + account.ID + ", Balance: " + account.Balance + "\n\n";
+                        endOutput += " Password: " + account.Password + ", Balance: $" + account.Balance + "\n\n";
                     }
                     //endOutput = "test";
 
                 }
 
-                
-                //if (userMessage.ToLower().Equals("new account"))
-                //{
-                //    CurrencyObject database = new CurrencyObject()
-                //    {
-                //        ID = "12345432166",
-                //        //CreatedAt = DateTime.Now,
-                //        //UpdatedAt = DateTime.Now,
-                //        //Deleted = false,
-                //        //Version = "1.0"
-                //    };
 
-                //    await AzureManager.AzureManagerInstance.CreateAccount(database);
+                if (userMessage.ToLower().Equals("new account"))
+                {
+                    timeline account = new timeline()
+                    {
+                        ID = "12345432166",
+                        //CreatedAt = DateTime.Now,
+                        //UpdatedAt = DateTime.Now,
+                        //Deleted = false,
+                        //Version = "1.0"
+                        Balance = 1333,
+                        Password = 9999
+                    };
 
-                    
+                    await AzureManager.AzureManagerInstance.CreateAccount(account);
 
-                //    endOutput = "New timeline added [" + database.CreatedAt + "]";
-                //}
 
-                
+
+                    endOutput = "New account created at [" + account.CreatedAt + "]";
+                }
+
+
                 //if (userMessage.ToLower().Equals("delete account"))
                 //{
                 //    CurrencyObject database = new CurrencyObject()
@@ -202,7 +204,7 @@ namespace Bank_Bot
 
                 //    await AzureManager.AzureManagerInstance.DeleteAccount(database);
 
-                    
+
 
                 //    //endOutput = "New timeline added [" + database.CreatedAt + "]";
                 //}///////////////

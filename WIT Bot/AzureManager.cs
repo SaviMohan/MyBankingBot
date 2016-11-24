@@ -49,12 +49,17 @@ namespace Bank_Bot
 
         public async Task CreateAccount(timeline account)
         {
-            await currencyAccount.InsertAsync(account);
+            await this.currencyAccount.InsertAsync(account);
         }
 
         public async Task<List<timeline>> GetAccount()
         {
             return await this.currencyAccount.ToListAsync();
+        }
+
+        public async Task UpdateAccount(timeline account)
+        {
+            await this.currencyAccount.UpdateAsync(account);
         }
     }
 }
