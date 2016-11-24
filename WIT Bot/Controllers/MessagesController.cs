@@ -304,7 +304,7 @@ namespace Bank_Bot
                                 //    return false;
                                 //}
 
-                                isDouble = Double.TryParse(balanceString, out num);
+                                isDouble = Double.TryParse(balanceString, out num); //tries to see if the balanceString represents a value of type double
                                 if (isDouble)
                                 {
                                     List<moneyTable> accounts = await AzureManager.AzureManagerInstance.GetAccount();
@@ -316,7 +316,7 @@ namespace Bank_Bot
                                         {
                                             moneyAccount.Balance = Convert.ToDouble(balanceString);
                                             //moneyAccount.Password = 8888;
-                                            endOutput = "Account No. " + encryptedPassword + " balance has been updated to $" + balanceString;
+                                            endOutput = "Account No. " + passwordString + " has had its balance updated to $" + balanceString;
                                             await AzureManager.AzureManagerInstance.UpdateAccount(moneyAccount);
                                         }
                                     }
