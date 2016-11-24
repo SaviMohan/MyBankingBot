@@ -514,7 +514,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard12 = new ThumbnailCard()
                     {
                         
-                        Subtitle = "**clear**- Clear's the user's data",
+                        Subtitle = " **clear** - Clear's the user's data",
                         Images = cardImages,
                        
                     };
