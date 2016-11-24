@@ -410,7 +410,7 @@ namespace Bank_Bot
                     {
                         Title = endOutput,
 
-                        Images = cardImages,
+                        Images = cardImages
                         //Buttons = cardButtons
                     };
                     Attachment plAttachment = plCard.ToAttachment();
