@@ -128,7 +128,7 @@ namespace Bank_Bot
 
                 if (userMessage.ToLower().Equals("list of currencies"))
                 {
-                    Activity replyToConversation = activity.CreateReply("List of Available Currencies");
+                    Activity replyToConversation = activity.CreateReply("List of Currencies Available");
                     replyToConversation.Recipient = activity.From;
                     replyToConversation.Type = "message";
                     replyToConversation.Attachments = new List<Attachment>();
@@ -159,53 +159,53 @@ namespace Bank_Bot
                 /////////////////////////////
                 if (userMessage.ToLower().Equals("get account"))
                 {
-                    List<CurrencyObject> accounts = await AzureManager.AzureManagerInstance.GetAccount();
+                    List<timeline> accounts = await AzureManager.AzureManagerInstance.GetAccount();
                     endOutput = "";
-                    foreach (CurrencyObject account in accounts)
+                    foreach (timeline account in accounts)
                     {
                         endOutput += "[" + account.CreatedAt + "] ID " + account.ID + ", Balance: " + account.Balance + "\n\n";
                     }
-                    
+                    endOutput = "test";
 
                 }
 
                 
-                if (userMessage.ToLower().Equals("new account"))
-                {
-                    CurrencyObject database = new CurrencyObject()
-                    {
-                        ID = "12345432166",
-                        //CreatedAt = DateTime.Now,
-                        //UpdatedAt = DateTime.Now,
-                        //Deleted = false,
-                        //Version = "1.0"
-                    };
+                //if (userMessage.ToLower().Equals("new account"))
+                //{
+                //    CurrencyObject database = new CurrencyObject()
+                //    {
+                //        ID = "12345432166",
+                //        //CreatedAt = DateTime.Now,
+                //        //UpdatedAt = DateTime.Now,
+                //        //Deleted = false,
+                //        //Version = "1.0"
+                //    };
 
-                    await AzureManager.AzureManagerInstance.CreateAccount(database);
+                //    await AzureManager.AzureManagerInstance.CreateAccount(database);
 
                     
 
-                    endOutput = "New timeline added [" + database.CreatedAt + "]";
-                }
+                //    endOutput = "New timeline added [" + database.CreatedAt + "]";
+                //}
 
                 
-                if (userMessage.ToLower().Equals("delete account"))
-                {
-                    CurrencyObject database = new CurrencyObject()
-                    {
-                        ID = "12345432100",
-                        //CreatedAt = DateTime.Now,
-                        //UpdatedAt = DateTime.Now,
-                        //Deleted = false,
-                        //Version = "1.0"
-                    };
+                //if (userMessage.ToLower().Equals("delete account"))
+                //{
+                //    CurrencyObject database = new CurrencyObject()
+                //    {
+                //        ID = "12345432100",
+                //        //CreatedAt = DateTime.Now,
+                //        //UpdatedAt = DateTime.Now,
+                //        //Deleted = false,
+                //        //Version = "1.0"
+                //    };
 
-                    await AzureManager.AzureManagerInstance.DeleteAccount(database);
+                //    await AzureManager.AzureManagerInstance.DeleteAccount(database);
 
                     
 
-                    //endOutput = "New timeline added [" + database.CreatedAt + "]";
-                }///////////////
+                //    //endOutput = "New timeline added [" + database.CreatedAt + "]";
+                //}///////////////
 
                 if (userMessage.ToLower().Equals("help"))
                 {
