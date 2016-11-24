@@ -137,7 +137,7 @@ namespace Bank_Bot
                     List<CardAction> cardButtons = new List<CardAction>();
                     CardAction plButton = new CardAction()
                     {
-                        Value = "http://fixer.io",
+                        Value = "http://finance.yahoo.com/currencies",
                         Type = "openUrl",
                         Title = "Currency Website"
                     };
