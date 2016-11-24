@@ -137,9 +137,9 @@ namespace Bank_Bot
                     List<CardAction> cardButtons = new List<CardAction>();
                     CardAction plButton = new CardAction()
                     {
-                        Value = "http://fixer.io",
+                        Value = "http://finance.yahoo.com/currencies",
                         Type = "openUrl",
-                        Title = "Currency API Website"
+                        Title = "Currency Website"
                     };
                     cardButtons.Add(plButton);
                     ThumbnailCard plCard = new ThumbnailCard()
@@ -478,7 +478,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard5 = new ThumbnailCard()
                     {
 
-                        Subtitle = "'account view <insert 5 digit password here>'- Retrieves the bank balance for an account that corressponds to the input password",
+                        Subtitle = "'account view <insert 5 digit password here>'- Retrieves the bank balance for an account that corresponds to the input password",
 
                     };
                     Attachment plAttachment5 = plCard5.ToAttachment();
@@ -487,7 +487,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard6 = new ThumbnailCard()
                     {
 
-                        Subtitle = "'account new <insert 5 digit password here>'- Creates an account that corressponds to the input password",
+                        Subtitle = "'account new <insert 5 digit password here>'- Creates an account that corresponds to the input password",
 
                     };
                     Attachment plAttachment6 = plCard6.ToAttachment();
@@ -496,7 +496,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard7 = new ThumbnailCard()
                     {
 
-                        Subtitle = "'account update <insert 5 digit password here> <insert bank balance here>'- Updates the balance of the account that corressponds to the input password",
+                        Subtitle = "'account update <insert 5 digit password here> <insert bank balance here>'- Updates the balance of the account that corresponds to the input password",
 
                     };
                     Attachment plAttachment7 = plCard7.ToAttachment();
@@ -505,7 +505,7 @@ namespace Bank_Bot
                     ThumbnailCard plCard8 = new ThumbnailCard()
                     {
 
-                        Subtitle = "'account delete <insert 5 digit password here>'- Deletes the account that corressponds to the input password",
+                        Subtitle = "'account delete <insert 5 digit password here>'- Deletes the account that corresponds to the input password",
 
                     };
                     Attachment plAttachment8 = plCard8.ToAttachment();
@@ -609,9 +609,9 @@ namespace Bank_Bot
                     List<CardAction> cardButtons = new List<CardAction>();
                     CardAction plButton = new CardAction()
                     {
-                        Value = "http://fixer.io",
+                        Value = "http://finance.yahoo.com/currencies",
                         Type = "openUrl",
-                        Title = "Currency API Website"
+                        Title = "Currency Website"
                     };
                     cardButtons.Add(plButton);
                     ThumbnailCard plCard = new ThumbnailCard()
