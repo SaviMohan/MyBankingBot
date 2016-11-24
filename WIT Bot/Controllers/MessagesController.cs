@@ -156,7 +156,7 @@ namespace Bank_Bot
                     return Request.CreateResponse(HttpStatusCode.OK);
                 }
 
-                if ((userMessage.Length > 8) && (userMessage.ToLower().Substring(0, 6).Equals("account")))
+                if ((userMessage.Length > 8) && (userMessage.ToLower().Substring(0, 7).Equals("account")))
                 {
                     List<moneyTable> listaccounts = await AzureManager.AzureManagerInstance.GetAccount();
                     //double[] passwordArray = new double[] { };
@@ -169,7 +169,7 @@ namespace Bank_Bot
                     }
 
                     /////////////////////////////
-                    if (userMessage.ToLower().Equals("account view"))
+                    if (userMessage.ToLower().Substring(0,12).Equals("account view"))
                     {
                         //string str = "0129834X33";
                         string passwordString = userMessage.Substring(13);
