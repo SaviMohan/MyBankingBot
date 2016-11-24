@@ -234,7 +234,7 @@ namespace Bank_Bot
 
                 if (userMessage.ToLower().Equals("help"))
                 {
-                    Activity replyToConversation = activity.CreateReply("List of Commands");
+                    Activity replyToConversation = activity.CreateReply("List of Valid Commands");
                     replyToConversation.Recipient = activity.From;
                     replyToConversation.Type = "message";
                     replyToConversation.Attachments = new List<Attachment>();
