@@ -334,24 +334,62 @@ namespace Bank_Bot
                     }
 
 
-                    if (userMessage.ToLower().Equals("delete account"))
+                    if (userMessage.ToLower().Substring(0, 14).Equals("account delete"))
                     {
-                        moneyTable account = new moneyTable()
+                        string passwordString = userMessage.Substring(15);
+                        bool isAllDigits = !passwordString.Any(ch => ch < '0' || ch > '9');
+
+                        if ((passwordString.Length != 5) || !(isAllDigits))
                         {
-                            ID = "12345432167",
-                            //CreatedAt = DateTime.Now,
-                            //UpdatedAt = DateTime.Now,
-                            //Deleted = false,
-                            //Version = "1.0"
-                            //Balance = 1333,
-                            //Password = 9999
-                        };
+                            endOutput = "Please ensure password is a positive 5 digit number";
+                        }
+                        else
+                        {
+                            int encryptedPassword = ((int.Parse(passwordString)) * 10) - 1;
+                            if (!((passwordList).Contains(encryptedPassword)))
+                            {
+                                endOutput = "This account does not exist in our Database, please try again with a different 5 digit password";
+                            }
+                            else
+                            {
+                                List<moneyTable> accounts = await AzureManager.AzureManagerInstance.GetAccount();
+                                string idAccountToDelete = "";
+                                foreach (moneyTable moneyAccount in accounts)
+                                {
 
-                        await AzureManager.AzureManagerInstance.DeleteAccount(account);
+                                    if (moneyAccount.Password == encryptedPassword)
+                                    {
+                                        idAccountToDelete = moneyAccount.ID;
+                                        moneyTable account = new moneyTable()
+                                        {
+                                            ID = idAccountToDelete
+                                        };
+                                        endOutput = "Account No. "+passwordString+" has been deleted";
+                                        await AzureManager.AzureManagerInstance.DeleteAccount(account);
+
+                                    }
+                                }
+                                
+                        }
+                    
+                        }
+
+                        //moneyTable account = new moneyTable()
+                        //{
+                        //    ID = "12345432167",
+                        //    //CreatedAt = DateTime.Now,
+                        //    //UpdatedAt = DateTime.Now,
+                        //    //Deleted = false,
+                        //    //Version = "1.0"
+                        //    //Balance = 1333,
+                        //    //Password = 9999
+                        //};
+
+                        //await AzureManager.AzureManagerInstance.DeleteAccount(account);
 
 
 
-                        endOutput = "Account deleted ";//[" + account.CreatedAt + "]";
+                        //endOutput = "Account deleted ";//[" + account.CreatedAt + "]";
                     }///////////////
                 }
 
