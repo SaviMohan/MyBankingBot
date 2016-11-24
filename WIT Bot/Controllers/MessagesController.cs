@@ -191,23 +191,25 @@ namespace Bank_Bot
                 }
 
 
-                //if (userMessage.ToLower().Equals("delete account"))
-                //{
-                //    CurrencyObject database = new CurrencyObject()
-                //    {
-                //        ID = "12345432100",
-                //        //CreatedAt = DateTime.Now,
-                //        //UpdatedAt = DateTime.Now,
-                //        //Deleted = false,
-                //        //Version = "1.0"
-                //    };
+                if (userMessage.ToLower().Equals("delete account"))
+                {
+                    timeline account = new timeline()
+                    {
+                        ID = "12345432166",
+                        //CreatedAt = DateTime.Now,
+                        //UpdatedAt = DateTime.Now,
+                        //Deleted = false,
+                        //Version = "1.0"
+                        //Balance = 1333,
+                        //Password = 9999
+                    };
 
-                //    await AzureManager.AzureManagerInstance.DeleteAccount(database);
+                    await AzureManager.AzureManagerInstance.DeleteAccount(account);
 
 
 
-                //    //endOutput = "New timeline added [" + database.CreatedAt + "]";
-                //}///////////////
+                    endOutput = "Account deleted ";//[" + account.CreatedAt + "]";
+                }///////////////
 
                 if (userMessage.ToLower().Equals("help"))
                 {
