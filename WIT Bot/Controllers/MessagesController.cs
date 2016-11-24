@@ -165,7 +165,7 @@ namespace Bank_Bot
                     {
                         endOutput += "[" + account.CreatedAt + "] ID " + account.ID + ", Balance: " + account.Balance + "\n\n";
                     }
-                    endOutput = "test";
+                    //endOutput = "test";
 
                 }
 
