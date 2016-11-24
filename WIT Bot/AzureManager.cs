@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace Bank_Bot
 {
@@ -14,12 +15,12 @@ namespace Bank_Bot
     {
         private static AzureManager instance;
         private MobileServiceClient client;
-        private IMobileServiceTable<Timeline> timelineTable;
+        private IMobileServiceTable<CurrencyObject> currencyAccount;
 
         private AzureManager()
         {
-            this.client = new MobileServiceClient("http://hellotheretest.azurewebsites.net");
-            this.timelineTable = this.client.GetTable<Timeline>();
+            client = new MobileServiceClient("http://moodtimeline111111.azurewebsites.net");
+            currencyAccount = client.GetTable<CurrencyObject>();
         }
 
         public MobileServiceClient AzureClient
@@ -40,14 +41,20 @@ namespace Bank_Bot
             }
         }
 
-        public async Task AddTimeline(Timeline timeline)
+        public async Task DeleteAccount(CurrencyObject account)
         {
-            await this.timelineTable.InsertAsync(timeline);
+            await currencyAccount.DeleteAsync(account);
         }
 
-        public async Task<List<Timeline>> GetTimelines()
+
+        public async Task CreateAccount(CurrencyObject account)
         {
-            return await this.timelineTable.ToListAsync();
+            await currencyAccount.InsertAsync(account);
+        }
+
+        public async Task<List<CurrencyObject>> GetAccount()
+        {
+            return await currencyAccount.ToListAsync();
         }
     }
 }

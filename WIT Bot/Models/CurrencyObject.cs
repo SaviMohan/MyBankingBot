@@ -7,42 +7,24 @@ using System.Threading.Tasks;
 
 namespace Bank_Bot.Models
 {
-    public class Timeline
+    public class CurrencyObject
     {
         [JsonProperty(PropertyName = "id")]
         public string ID { get; set; }
 
-        [JsonProperty(PropertyName = "anger")]
-        public double Anger { get; set; }
-
-        [JsonProperty(PropertyName = "contempt")]
-        public double Contempt { get; set; }
-
-        [JsonProperty(PropertyName = "disgust")]
-        public double Disgust { get; set; }
-
-        [JsonProperty(PropertyName = "fear")]
-        public double Fear { get; set; }
-
-        [JsonProperty(PropertyName = "happiness")]
-        public double Happiness { get; set; }
-
-        [JsonProperty(PropertyName = "neutral")]
-        public double Neutral { get; set; }
-
-        [JsonProperty(PropertyName = "sadness")]
-        public double Sadness { get; set; }
-
-        [JsonProperty(PropertyName = "surprise")]
-        public double Surprise { get; set; }
-
         [JsonProperty(PropertyName = "createdAt")]
-        public DateTime Date { get; set; }
+        public DateTime CreatedAt { get; set; }
 
-        [JsonProperty(PropertyName = "lat")]
-        public double Lat { get; set; }
+        [JsonProperty(PropertyName = "updatedAt")]
+        public DateTime UpdatedAt { get; set; }
 
-        [JsonProperty(PropertyName = "lon")]
-        public double Lon { get; set; }
+        [JsonProperty(PropertyName = "version")]
+        public string Version { get; set; }
+
+        [JsonProperty(PropertyName = "deleted")]
+        public bool Deleted { get; set; }
+
+        [JsonProperty(PropertyName = "balance")]
+        public double Balance { get; set; }
     }
 }
