@@ -65,7 +65,7 @@ namespace Bank_Bot
                     }
                     else
                     {
-                        userData.SetProperty<string>("BaseCurrency", baseCurrency);/////
+                        userData.SetProperty<string>("BaseCurrency", baseCurrency);
                         await stateClient.BotState.SetUserDataAsync(activity.ChannelId, activity.From.Id, userData);
                         endOutput = "Base Currency is set to "+ baseCurrency.ToUpper();
                     }
@@ -159,19 +159,19 @@ namespace Bank_Bot
                 if ((userMessage.Length > 8) && (userMessage.ToLower().Substring(0, 7).Equals("account")))
                 {
                     List<moneyTable> listaccounts = await AzureManager.AzureManagerInstance.GetAccount();
-                    //double[] passwordArray = new double[] { };
+                    
                     List<double> passwordList = new List<double>();
-                    //endOutput = "";
+                    
                     foreach (moneyTable listaccount in listaccounts)
                     {
                         passwordList.Add(listaccount.Password);
-                        //endOutput += " Password: " + account.Password + ", Balance: $" + account.Balance + "\n\n";
+                        
                     }
 
-                    /////////////////////////////
+                    
                     if (userMessage.ToLower().Substring(0,12).Equals("account view"))
                     {
-                        //string str = "0129834X33";
+                        
                         string passwordString = userMessage.Substring(13);
                         bool isAllDigits = !passwordString.Any(ch => ch < '0' || ch > '9');
 
@@ -187,7 +187,7 @@ namespace Bank_Bot
                             } else
                             {
                                 List<moneyTable> accounts = await AzureManager.AzureManagerInstance.GetAccount();
-                                //endOutput = "";
+                                
                                 foreach (moneyTable account in accounts)
                                 {
                                     if (account.Password == encryptedPassword)
@@ -201,7 +201,7 @@ namespace Bank_Bot
                         }
 
                         
-                        //endOutput = "test";
+                        
 
                     }
 
@@ -226,11 +226,7 @@ namespace Bank_Bot
                             {
                                 moneyTable account = new moneyTable()
                                 {
-                                    //ID = "12345432167",
-                                    //CreatedAt = DateTime.Now,
-                                    //UpdatedAt = DateTime.Now,
-                                    //Deleted = false,
-                                    //Version = "1.0"
+                                    
                                     Balance = 0,
                                     Password = encryptedPassword
                                 };
@@ -243,40 +239,7 @@ namespace Bank_Bot
 
                     if (userMessage.ToLower().Substring(0, 14).Equals("account update"))
                     {
-                        //moneyTable account = new moneyTable()
-                        //{
-                        //    ID = "12345432167",
-                        //    //CreatedAt = DateTime.Now,
-                        //    //UpdatedAt = DateTime.Now,
-                        //    //Deleted = false,
-                        //    //Version = "1.0"
-                        //    Balance = 1999,
-                        //    Password = 8888
-                        //};
-
-                        //await AzureManager.AzureManagerInstance.CreateAccount(account);
-
-                        //List<moneyTable> accounts = await AzureManager.AzureManagerInstance.GetAccount();
-                        ////endOutput = "";
-                        //foreach (moneyTable moneyAccount in accounts)
-                        //{
-                        //    //endOutput += " Password: " + account.Password + ", Balance: $" + account.Balance + "\n\n";
-                        //    if (moneyAccount.ID == "12345432167")
-                        //    {
-                        //        moneyAccount.Balance = 1999;
-                        //        moneyAccount.Password = 8888;
-                        //        await AzureManager.AzureManagerInstance.UpdateAccount(moneyAccount);
-                        //    }
-                        //}
-
-                        //var namebet = await todoTable.Where(p => p.Id == 1).ToListAsync();
-
-                        //foreach (var item in namebet)
-                        //{
-                        //    item.Bettiefinalscore1 = int.Parse(FinalScoreA.Text);
-                        //    item.Bettiefinalscore2 = int.Parse(FinalScoreB.Text);
-                        //    await todoTable.UpdateAsync(item);
-                        //}
+                        
 
                         string passwordString = userMessage.Substring(15,5); //extract password
                         bool isAllDigits = !passwordString.Any(ch => ch < '0' || ch > '9');
@@ -298,24 +261,20 @@ namespace Bank_Bot
                                 Double num = 0;
                                 bool isDouble = false;
 
-                                // Check for empty string.
-                                //if (string.IsNullOrEmpty(text))
-                                //{
-                                //    return false;
-                                //}
+                                
 
                                 isDouble = Double.TryParse(balanceString, out num); //tries to see if the balanceString represents a value of type double
                                 if (isDouble)
                                 {
                                     List<moneyTable> accounts = await AzureManager.AzureManagerInstance.GetAccount();
-                                    //endOutput = "";
+                                    
                                     foreach (moneyTable moneyAccount in accounts)
                                     {
-                                        //endOutput += " Password: " + account.Password + ", Balance: $" + account.Balance + "\n\n";
+                                        
                                         if (moneyAccount.Password == encryptedPassword)
                                         {
                                             moneyAccount.Balance = Convert.ToDouble(balanceString);
-                                            //moneyAccount.Password = 8888;
+                                            
                                             endOutput = "Account No. " + passwordString + " has had its balance updated to $" + balanceString;
                                             await AzureManager.AzureManagerInstance.UpdateAccount(moneyAccount);
                                         }
@@ -330,7 +289,7 @@ namespace Bank_Bot
                             }
                         }
 
-                        //endOutput = "account updated [";// + account.CreatedAt + "]";
+                        
                     }
 
 
@@ -374,23 +333,8 @@ namespace Bank_Bot
                     
                         }
 
-                        //moneyTable account = new moneyTable()
-                        //{
-                        //    ID = "12345432167",
-                        //    //CreatedAt = DateTime.Now,
-                        //    //UpdatedAt = DateTime.Now,
-                        //    //Deleted = false,
-                        //    //Version = "1.0"
-                        //    //Balance = 1333,
-                        //    //Password = 9999
-                        //};
-
-                        //await AzureManager.AzureManagerInstance.DeleteAccount(account);
-
-
-
-                        //endOutput = "Account deleted ";//[" + account.CreatedAt + "]";
-                    }///////////////
+                        
+                    }
 
                     Activity replyToConversation = activity.CreateReply("Bank Account");
                     replyToConversation.Recipient = activity.From;
@@ -398,20 +342,13 @@ namespace Bank_Bot
                     replyToConversation.Attachments = new List<Attachment>();
                     List<CardImage> cardImages = new List<CardImage>();
                     cardImages.Add(new CardImage(url: "https://pbs.twimg.com/profile_images/709620078/contosobanklogo.jpg"));
-                    //List<CardAction> cardButtons = new List<CardAction>();
-                    //CardAction plButton = new CardAction()
-                    //{
-                    //    Value = "http://fixer.io",
-                    //    Type = "openUrl",
-                    //    Title = "Currency API Website"
-                    //};
-                    //cardButtons.Add(plButton);
+                    
                     ThumbnailCard plCard = new ThumbnailCard()
                     {
-                        //Title = endOutput,
+                        
                         Subtitle  = endOutput,
                         Images = cardImages
-                        //Buttons = cardButtons
+                        
                     };
                     Attachment plAttachment = plCard.ToAttachment();
                     replyToConversation.Attachments.Add(plAttachment);
