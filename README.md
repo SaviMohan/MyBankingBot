@@ -1,2 +1,2 @@
-# MyContosoBankBot
-My MSA Bot
+# MyBankingBot
+My Banking Bot
